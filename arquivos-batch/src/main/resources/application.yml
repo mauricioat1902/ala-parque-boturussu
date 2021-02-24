@@ -1,0 +1,10 @@
+arquivo:
+  caminho: C:\lds-arquivos\
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/boturussu
+    password: root
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
