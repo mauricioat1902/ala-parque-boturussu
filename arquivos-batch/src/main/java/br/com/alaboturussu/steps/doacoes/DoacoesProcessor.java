@@ -12,6 +12,7 @@ import br.com.alaboturussu.interfaces.IDoacaoOfertaJejumService;
 import br.com.alaboturussu.interfaces.IMembroService;
 import br.com.alaboturussu.model.Doacao;
 import br.com.alaboturussu.utils.Utils;
+import javassist.NotFoundException;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,7 @@ import java.util.function.Predicate;
 @Component
 public class DoacoesProcessor implements ItemProcessor<List<String>, List<Doacao>> {
 
+    public static final String SEPARADOR = ";";
     @Autowired
     private IMembroService membroService;
     @Autowired
@@ -39,7 +41,7 @@ public class DoacoesProcessor implements ItemProcessor<List<String>, List<Doacao
     private IDoacaoOfertaJejumService ofertaJejumService;
 
     @Override
-    public List<Doacao> process(List<String> linhas) {
+    public List<Doacao> process(List<String> linhas) throws NotFoundException {
         List<DoacaoDizimo> dizimosSalvos = dizimoService.buscarTodos();
         List<DoacaoCategoriaOutros> categoriaOutrosSalvos = categoriaOutrosService.buscarTodos();
         List<DoacaoFundoMissionarioAla> fundosMissionarioAlaSalvos = fundoMissionarioAlaService.buscarTodos();
@@ -59,7 +61,7 @@ public class DoacoesProcessor implements ItemProcessor<List<String>, List<Doacao
     }
 
     private void preencherListaDeDoacoes(List<DoacaoDizimo> dizimosSalvos, List<DoacaoCategoriaOutros> categoriaOutrosSalvos, List<DoacaoFundoMissionarioAla> fundosMissionarioAlaSalvos, List<DoacaoOfertaJejum> ofertasJejumSalvas, List<Doacao> doacaos, Membro membro, DateTimeFormatter formatter, String linha) {
-        String[] linhaSplit = linha.split(";");
+        String[] linhaSplit = linha.split(SEPARADOR);
         LocalDate dataDoacao = LocalDate.parse(linhaSplit[1], formatter);
         BigDecimal valorDizimo = Utils.converterBigDecimal(linhaSplit[2]);
         BigDecimal valorOfertaJejum =  Utils.converterBigDecimal(linhaSplit[3]);
@@ -131,15 +133,20 @@ public class DoacoesProcessor implements ItemProcessor<List<String>, List<Doacao
                         && dizimoSalvo.getValor().compareTo(valor) == 0;
     }
 
-    private Membro extrairMembro(String linha) {
-        String nomeCompleto = linha.split("\\(")[0].trim();
-        String sobrenome = nomeCompleto.split(",")[0].trim();
-        String nome = nomeCompleto.split(",")[1].trim();
+    private Membro extrairMembro(String linha) throws NotFoundException {
+        String[] linhaSplit = linha.split(SEPARADOR);
 
-        String numeroMembro = linha.split("\\(")[1].replace(")", "").trim();
+        String sobrenome = linhaSplit[0].trim();
+        String nome = linhaSplit[1].trim();
+        String numeroMembro = linhaSplit[2].trim();
+
         Membro membro = membroService.buscarPorNumero(numeroMembro);
         if (membro == null) {
             membro = membroService.buscarPorNomeESobrenome(nome, sobrenome);
+
+            if (membro == null)
+                throw new NotFoundException("Membro não encontrado");
+
             membro.setNumero(numeroMembro);
             membro = membroService.salvar(membro);
         }

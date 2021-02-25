@@ -39,8 +39,10 @@ public class DoacoesWriter implements ItemWriter<List<Doacao>> {
 
     @Override
     public void write(List<? extends List<Doacao>> list) throws IOException {
-        if (list.isEmpty() || list.get(0).isEmpty())
+        if (list.isEmpty() || list.get(0).isEmpty()) {
+            moverArquivo();
             return;
+        }
 
         List<Doacao> doacaos = list.stream()
                 .flatMap(List::stream)
@@ -67,6 +69,10 @@ public class DoacoesWriter implements ItemWriter<List<Doacao>> {
         ofertaJejumService.salvarTodos(ofertasJejum);
         fundoMissionarioAlaService.salvarTodos(fundosMissionarioAla);
 
+        moverArquivo();
+    }
+
+    private void moverArquivo() throws IOException {
         Path arquivo = Paths.get(this.caminhoArquivo + "doacoes_membros.csv");
         Path destino = Paths.get(this.caminhoArquivo + "/lido/doacoes_membros.csv");
         Files.move(arquivo, destino);
