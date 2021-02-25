@@ -1,5 +1,8 @@
 package br.com.alaboturussu.entity;
 
+import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvDate;
+import com.opencsv.bean.CsvRecurse;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,10 +26,15 @@ public class Membro implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @CsvBindByPosition(position = 1)
     private String nome;
+    @CsvBindByPosition(position = 0)
     private String sobrenome;
     private String numero;
+    @CsvBindByPosition(position = 2)
     private char sexo;
+    @CsvBindByPosition(position = 3)
+    @CsvDate("d MMM yyyy")
     private LocalDate dataNascimento;
 
     public Membro(String nome, String sobrenome, char sexo, LocalDate dataNascimento) {

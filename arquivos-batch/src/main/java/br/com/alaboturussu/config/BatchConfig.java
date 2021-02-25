@@ -22,6 +22,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.io.BufferedReader;
 import java.util.List;
 
 @Configuration
@@ -53,7 +54,7 @@ public class BatchConfig extends DefaultBatchConfigurer {
     public Step listaMembrosStep(ListaMembrosReader listaMembrosReader, ListaMembrosProcessor listaMembrosProcessor, ListaMembrosWriter listaMembrosWriter) {
         return stepBuilderFactory.get("listaMembrosStep")
                 .transactionManager(transactionManager)
-                .<List<String>, List<Membro>> chunk(1)
+                .<BufferedReader, List<Membro>> chunk(1)
                 .reader(listaMembrosReader)
                 .processor(listaMembrosProcessor)
                 .writer(listaMembrosWriter)
