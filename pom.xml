@@ -7,6 +7,7 @@
     <modules>
         <module>core</module>
 		<module>arquivos-batch</module>
+		<module>ala-parque-boturussu-app</module>
 	</modules>
 
     <parent>

@@ -1,7 +1,7 @@
 package br.com.alaboturussu.steps.listamembros;
 
-import br.com.alaboturussu.entity.Membro;
-import br.com.alaboturussu.interfaces.IMembroService;
+import br.com.alaboturussu.core.entity.Membro;
+import br.com.alaboturussu.core.interfaces.IMembroService;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

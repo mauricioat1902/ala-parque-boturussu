@@ -1,16 +1,16 @@
 package br.com.alaboturussu.steps.doacoes;
 
-import br.com.alaboturussu.entity.DoacaoCategoriaOutros;
-import br.com.alaboturussu.entity.DoacaoDizimo;
-import br.com.alaboturussu.entity.DoacaoFundoMissionarioAla;
-import br.com.alaboturussu.entity.DoacaoOfertaJejum;
-import br.com.alaboturussu.entity.Membro;
-import br.com.alaboturussu.interfaces.IDoacaoCategoriaOutrosService;
-import br.com.alaboturussu.interfaces.IDoacaoDizimoService;
-import br.com.alaboturussu.interfaces.IDoacaoFundoMissionarioAlaService;
-import br.com.alaboturussu.interfaces.IDoacaoOfertaJejumService;
-import br.com.alaboturussu.interfaces.IMembroService;
-import br.com.alaboturussu.model.Doacao;
+import br.com.alaboturussu.core.entity.DoacaoCategoriaOutros;
+import br.com.alaboturussu.core.entity.DoacaoDizimo;
+import br.com.alaboturussu.core.entity.DoacaoFundoMissionarioAla;
+import br.com.alaboturussu.core.entity.DoacaoOfertaJejum;
+import br.com.alaboturussu.core.entity.Membro;
+import br.com.alaboturussu.core.interfaces.IDoacaoCategoriaOutrosService;
+import br.com.alaboturussu.core.interfaces.IDoacaoDizimoService;
+import br.com.alaboturussu.core.interfaces.IDoacaoFundoMissionarioAlaService;
+import br.com.alaboturussu.core.interfaces.IDoacaoOfertaJejumService;
+import br.com.alaboturussu.core.interfaces.IMembroService;
+import br.com.alaboturussu.core.model.Doacao;
 import br.com.alaboturussu.utils.Utils;
 import javassist.NotFoundException;
 import org.springframework.batch.item.ItemProcessor;

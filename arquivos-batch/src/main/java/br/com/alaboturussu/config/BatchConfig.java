@@ -1,8 +1,8 @@
 package br.com.alaboturussu.config;
 
-import br.com.alaboturussu.entity.Membro;
+import br.com.alaboturussu.core.entity.Membro;
 import br.com.alaboturussu.listener.JobListener;
-import br.com.alaboturussu.model.Doacao;
+import br.com.alaboturussu.core.model.Doacao;
 import br.com.alaboturussu.steps.doacoes.DoacoesProcessor;
 import br.com.alaboturussu.steps.doacoes.DoacoesReader;
 import br.com.alaboturussu.steps.doacoes.DoacoesWriter;
