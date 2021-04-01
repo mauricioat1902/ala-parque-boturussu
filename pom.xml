@@ -17,7 +17,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>br.com.alaboturussu</groupId>
+	<groupId>br.com.alaparqueboturussu</groupId>
 	<artifactId>ala-parque-boturussu</artifactId>
 	<version>1.0</version>
 	<name>ala-parque-boturussu</name>
@@ -25,7 +25,8 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<opencsv.version>5.3</opencsv.version>
+		<opencsv.version>5.4</opencsv.version>
+		<lombok.version>1.18.16</lombok.version>
 	</properties>
 
 	<dependencies>
@@ -42,7 +43,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>${lombok.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

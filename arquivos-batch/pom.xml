@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>ala-parque-boturussu</artifactId>
-        <groupId>br.com.alaboturussu</groupId>
+        <groupId>br.com.alaparqueboturussu</groupId>
         <version>1.0</version>
         <relativePath>../</relativePath>
     </parent>
@@ -15,7 +15,7 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <alaboturussu-core.version>1.0</alaboturussu-core.version>
+        <alaparqueboturussu-core.version>1.0</alaparqueboturussu-core.version>
     </properties>
 
     <dependencies>
@@ -36,9 +36,9 @@
         </dependency>
 
         <dependency>
-            <groupId>br.com.alaboturussu</groupId>
+            <groupId>br.com.alaparqueboturussu</groupId>
             <artifactId>core</artifactId>
-            <version>${alaboturussu-core.version}</version>
+            <version>${alaparqueboturussu-core.version}</version>
         </dependency>
 
     </dependencies>

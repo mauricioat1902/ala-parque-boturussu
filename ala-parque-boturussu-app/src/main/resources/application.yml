@@ -1,11 +1,11 @@
 spring:
   datasource:
-    #    url: jdbc:mysql://localhost:3306/boturussu
-    #    username: root
-    #    password: root
-    url: jdbc:mysql://lds-boturussu.chkg8ypjguo6.sa-east-1.rds.amazonaws.com/boturussu
-    username: admin
-    password: boturussu
+        url: jdbc:mysql://localhost:3306/boturussu
+        username: root
+        password: root
+#    url: jdbc:mysql://lds-boturussu.chkg8ypjguo6.sa-east-1.rds.amazonaws.com/boturussu
+#    username: admin
+#    password: boturussu
   jpa:
     hibernate:
       ddl-auto: update
