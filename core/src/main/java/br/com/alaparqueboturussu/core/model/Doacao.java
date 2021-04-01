@@ -1,6 +1,7 @@
 package br.com.alaparqueboturussu.core.model;
 
 import br.com.alaparqueboturussu.core.entity.Membro;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +24,7 @@ public abstract class Doacao {
     @Id
     private Long id;
     @ManyToOne
+    @JsonIgnore
     private Membro membro;
     private BigDecimal valor;
     private LocalDate data;

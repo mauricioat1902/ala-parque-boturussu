@@ -1,5 +1,6 @@
 package br.com.alaparqueboturussu.core.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.opencsv.bean.CsvBindByPosition;
 import com.opencsv.bean.CsvDate;
 import lombok.Getter;
@@ -42,6 +43,7 @@ public class Membro implements Serializable {
     private boolean ativo;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "membro_id")
+    @JsonIgnore
     private List<DoacaoDizimo> dizimos;
 
     public Membro(String nome, String sobrenome, char sexo, LocalDate dataNascimento) {
