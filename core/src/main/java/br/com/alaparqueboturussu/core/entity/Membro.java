@@ -1,5 +1,6 @@
 package br.com.alaparqueboturussu.core.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.opencsv.bean.CsvBindByPosition;
 import com.opencsv.bean.CsvDate;
@@ -17,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 @Getter
@@ -39,6 +41,7 @@ public class Membro implements Serializable {
     private char sexo;
     @CsvBindByPosition(position = 3)
     @CsvDate("d MMM yyyy")
+    @JsonFormat(pattern="yyyy-MM-dd", timezone="America/Sao_Paulo")
     private LocalDate dataNascimento;
     private boolean ativo;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -52,4 +55,9 @@ public class Membro implements Serializable {
         this.sexo = sexo;
         this.dataNascimento = dataNascimento;
     }
+
+    public int getIdade() {
+        return Period.between(this.dataNascimento, LocalDate.now()).getYears();
+    }
+
 }

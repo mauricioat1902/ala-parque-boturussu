@@ -1,6 +1,7 @@
 package br.com.alaparqueboturussu.core.model;
 
 import br.com.alaparqueboturussu.core.entity.Membro;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,7 @@ public abstract class Doacao {
     @JsonIgnore
     private Membro membro;
     private BigDecimal valor;
+    @JsonFormat(pattern="yyyy-MM-dd", timezone="America/Sao_Paulo")
     private LocalDate data;
 
 }
